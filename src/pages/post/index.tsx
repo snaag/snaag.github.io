@@ -6,7 +6,9 @@ const Post = () => {
 
     return (
         <div>
-            <h1>Post {postId}</h1>
+            <h1 className="text-3xl font-bold underline">
+                Post {postId}
+            </h1>
         </div>
     );
 };
