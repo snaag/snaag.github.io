@@ -5,7 +5,7 @@ import RecentPostList from "./RecentPostList";
 
 const Home = () => {
     return (
-        <div>
+        <div className="grid grid-cols-1 gap-y-4">
             <Profile />
             <Statistics />
             <RecentPostList />
