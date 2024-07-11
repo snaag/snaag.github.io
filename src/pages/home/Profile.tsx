@@ -4,7 +4,7 @@ import data from '../../assets/data.json';
 const Profile = () => {
     return (
         <div>
-            <h1 className="text-xl">Hello world!</h1>
+            <h1 className="text-xl text-center mb-3 font-bold md:text-left">Hello world!</h1>
             <div className="text-lg flex flex-col items-center text-center md:flex-row md:text-left md:justify-center">
                 <div className="profile__image mb-3 md:mb-0 md:mr-10"/>
                 <div className="flex flex-col">
