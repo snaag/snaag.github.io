@@ -60,3 +60,18 @@ code {
 * {
   box-sizing: border-box;
 }
+
+.profile__image {
+  background-image: url("./assets/profile.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.profile__youtube {
+  background-color: #FF0000;
+  color: #FFFFFF;
+}
