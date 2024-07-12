@@ -15,7 +15,7 @@ const Statistics = () => {
 
     return (
         <div>
-            <h1 className="text-2xl text-center m-4 font-bold md:text-left">통계</h1>
+            <h1 className="text-2xl text-center m-8 font-bold md:text-left">통계</h1>
             <div className="grid grid-cols-3 gap-3 md:grid-cols-5 md:gap-5">
                 {
                     labelCounts.map((labelCount: LabelCount, id: number) =>
