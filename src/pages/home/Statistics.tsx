@@ -39,7 +39,7 @@ const LabelCount = ({labelCount}: Props) => {
     return (
         <button style={style} className="rounded flex flex-col items-center justify-center p-2">
             <span className="truncate text-center w-full mb-1 font-bold">{labelCount.name}</span>
-            <span>{labelCount.count}</span>
+            <span>{labelCount.count} 개</span>
         </button>
     );
 };
