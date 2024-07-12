@@ -44,3 +44,9 @@ interface Comment {
     body: string,
     reactions: Reaction
 }
+
+interface LabelCount {
+    name: string,
+    count: number,
+    color: string
+}
