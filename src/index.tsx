@@ -27,7 +27,7 @@ const router = createBrowserRouter([
                 element: <PostPage />
             },
             {
-                path: "/post-list",
+                path: "/post-list/:label",
                 element: <PostListPage />,
             }
         ]
