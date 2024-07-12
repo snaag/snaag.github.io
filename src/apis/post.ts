@@ -19,15 +19,28 @@ export const getLabelsForOneIssue = async (issueNo: number): Promise<AxiosRespon
 }
 
 export const getIssuesByLabel = async (label: string): Promise<AxiosResponse<Issue[]>> => {
-    return getIssuesByLabels([label]);
+    const params = {
+        labels: label
+    };
+
+    return getIssues(params);
 }
 
 export const getIssuesByLabels = async (labels: string[]): Promise<AxiosResponse<Issue[]>> => {
     const params = {
+        labels: labels.map((label: string) => label.trim()).join(",")
+    };
+
+    return getIssues(params);
+}
+
+export const getIssues = async (givenParams: {[key:string]: any} = {}) => {
+    const params = {
         page: 1,
         per_page: 100,
-        labels: labels.map((label: string) => label.trim()).join(",")
+        ...givenParams
     }
+
     return authInstance.get('/issues', {params})
 }
 
