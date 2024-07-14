@@ -13,7 +13,7 @@ const Category = () => {
     return (
         <div className="col-span-1 w-full h-full md:max-h-56
         md:top-20 md:sticky md:bg-green-300 md:pl-4 md:pr-4 md:border-solid md:border md:rounded-lg">
-            <h3 className="text-lg text-center font-bold m-4">라벨 목록</h3>
+            <h3 className="text-lg text-center font-bold m-4">카테고리 목록</h3>
             <div>
                 {
                     labelCounts.map((labelCount, id) =>
