@@ -1,4 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
+import {getToken} from "./getToken";
 import data from '../assets/data.json';
 
 const baseURL = `https://api.github.com/repos/${data.repository.owner}/${data.repository.repo}`;
@@ -6,7 +7,7 @@ const baseURL = `https://api.github.com/repos/${data.repository.owner}/${data.re
 const authInstance = axios.create({
     baseURL,
     headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`
+        Authorization: `Bearer ${getToken()}`
     }
 })
 
