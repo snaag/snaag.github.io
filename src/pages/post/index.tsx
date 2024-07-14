@@ -27,11 +27,11 @@ const Post = () => {
 
     return (
         <>
-            <h1 className="sticky top-10 bg-white p-1">
-                <h1 className="text-xl font-bold underline text-center m-3 z-10 md:text-3xl">
+            <div className="sticky top-10 md:top-12 bg-white p-3 z-10 md:p-2 w-full block">
+                <h1 className="text-xl font-bold underline text-center md:mt-2 md:mb-10 md:text-3xl">
                     {post.title}
                 </h1>
-            </h1>
+            </div>
             {
                 post.markdowns.map((markdown, id) =>
                     <ReactMarkdown
