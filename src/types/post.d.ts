@@ -21,7 +21,8 @@ interface Issue {
     title: string,
     body: string,
     labels: Label[],
-    reactions: Reaction
+    reactions: Reaction,
+    user: User
 }
 
 interface Reaction {
@@ -45,7 +46,14 @@ interface Comment {
     created_at: string,
     updated_at: string,
     body: string,
-    reactions: Reaction
+    reactions: Reaction,
+    user: User
+}
+
+interface User {
+    login: string,
+    avatar_url: string
+
 }
 
 interface LabelCount {
