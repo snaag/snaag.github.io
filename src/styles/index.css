@@ -36,9 +36,6 @@ body {
   font-weight: 400;
   font-style: normal;
 }
-ol, ul {
-  list-style: none;
-}
 blockquote, q {
   quotes: none;
 }
@@ -62,7 +59,7 @@ code {
 }
 
 .profile__image {
-  background-image: url("./assets/profile.jpeg");
+  background-image: url("../assets/profile.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
