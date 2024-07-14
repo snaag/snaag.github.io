@@ -23,12 +23,11 @@ const PostList = () => {
         <div>
             <h2 className="text-lg text-center font-bold truncate max-w-full mb-4 p-2">{label} 카테고리</h2>
             <div className="grid grid-cols-1 md:grid-cols-4">
-                <div className="col-span-1 md:col-span-3">
+                <div className="col-span-1 md:col-span-3 mb-4">
                     {
                         posts.map((post, id) => <ListPostTitle post={post} key={id}/>)
                     }
                 </div>
-                <br/>
                 <Category/>
             </div>
 
