@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Navigation = () => {
     return (
-        <div className="flex justify-between sticky top-0 bg-green-300 p-2 text-base md:p-3">
+        <div className="flex justify-between sticky top-0 z-10 bg-green-300 p-2 text-base md:p-3">
             <h2 className="hidden font-bold md:block">
                 <Link to={'/'}>snaag 블로그</Link>
             </h2>
