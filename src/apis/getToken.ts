@@ -1,6 +1,6 @@
 export const getToken = () => {
     if(process.env.NODE_ENV === "production") {
-        return "";
+        return "PRODUCTION_TOKEN";
     }
-    return process.env.REACT_APP_TOKEN;
+    return "DEV_TOKEN";
 }
