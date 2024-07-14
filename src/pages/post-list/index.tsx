@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {getIssuesByLabel} from "../../apis/post";
 import ListPostTitle from "../../components/ListPostTitle";
@@ -8,11 +8,16 @@ const PostList = () => {
     const {label = ""} = useParams();
     const [posts, setPosts] = useState<Issue[]>([]);
 
-    (async () => {
+    useEffect(() => {
+        (async () => {
+            await loadPosts();
+        })();
+    }, []);
+
+    const loadPosts = async () => {
         const response = await getIssuesByLabel(label);
         setPosts(response.data);
-    })();
-
+    }
 
     return (
         <div>
@@ -20,10 +25,10 @@ const PostList = () => {
             <div className="grid grid-cols-1 md:grid-cols-4">
                 <div className="col-span-1 md:col-span-3">
                     {
-                        posts.map((post, id) => <ListPostTitle post={post} key={id} />)
+                        posts.map((post, id) => <ListPostTitle post={post} key={id}/>)
                     }
                 </div>
-                <Category />
+                <Category/>
             </div>
 
         </div>

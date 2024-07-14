@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {getIssue} from "../../apis/post";
 
@@ -6,10 +6,16 @@ const Post = () => {
     const {postId = ""} = useParams();
     const [post, setPost] = useState<Issue>({} as Issue);
 
-    (async () => {
-        const response = await getIssue(postId);
-        setPost(response.data);
-    })()
+    useEffect(() => {
+        (async () => {
+            await loadPost();
+        })()
+    }, []);
+
+    const loadPost = async () => {
+        const response = await getPost(postId);
+        setPost(response);
+    }
 
     return (
         <div>

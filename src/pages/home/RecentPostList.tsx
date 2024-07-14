@@ -1,14 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {getIssues} from "../../apis/post";
 import ListPostTitle from "../../components/ListPostTitle";
 
 const RecentPostList = () => {
     const [posts, setPosts] = useState<Issue[]>([]);
 
-    (async () => {
+    useEffect(() => {
+        (async () => {
+            await loadPosts();
+        })();
+    },  []);
+
+    const loadPosts = async () => {
         const result = await getIssues();
         setPosts(result.data);
-    })();
+    }
 
     return (
         <div>
