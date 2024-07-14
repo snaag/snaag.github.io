@@ -44,6 +44,14 @@ export const getIssues = async (givenParams: {[key:string]: any} = {}) => {
     return authInstance.get('/issues', {params})
 }
 
+export const getIssue = async (issueNo: string): Promise<AxiosResponse<Issue>> => {
+    return authInstance.get(`/issues/${issueNo}`)
+}
+
+export const getCommentsOfIssue = async (issueNo: number): Promise<AxiosResponse<Comment[]>> => {
+    return authInstance.get(`/issues/${issueNo}/comments`)
+}
+
 // 레이블 이름들과, 작성된 이슈들의 갯수를 반환
 export const getLabelCounts = async (): Promise<LabelCount[]> => {
     const ret = [];
