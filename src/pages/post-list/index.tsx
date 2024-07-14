@@ -12,7 +12,7 @@ const PostList = () => {
         (async () => {
             await loadPosts();
         })();
-    }, []);
+    }, [label]);
 
     const loadPosts = async () => {
         const response = await getIssuesByLabel(label);
