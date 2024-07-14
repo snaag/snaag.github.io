@@ -14,7 +14,7 @@ const Category = () => {
     const loadLabelCounts = async () => {
         const response = await getLabelCounts();
         setLabelCounts(response);
-    })();
+    }
 
     return (
         <div className="col-span-1 w-full h-full md:max-h-56
