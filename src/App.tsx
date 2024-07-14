@@ -8,7 +8,9 @@ function App() {
     return (
         <>
             <Navigation/>
-            <Outlet/>
+            <div className="p-5 md:pr-20 md:pl-20 md:pt-10 md:pd-10">
+                <Outlet/>
+            </div>
         </>
     );
 }
