@@ -1,11 +1,17 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {getLabelCounts} from "../../apis/post";
 
 const Category = () => {
     const [labelCounts, setLabelCounts] = useState<LabelCount[]>([]);
 
-    (async () => {
+    useEffect(() => {
+        (async () => {
+            await loadLabelCounts();
+        })();
+    }, []);
+
+    const loadLabelCounts = async () => {
         const response = await getLabelCounts();
         setLabelCounts(response);
     })();
