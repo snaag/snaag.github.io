@@ -38,6 +38,9 @@ interface Reaction {
 }
 
 interface Comment {
+    url: string,
+    html_url: string,
+    issue_url: string,
     id: number,
     created_at: string,
     updated_at: string,
