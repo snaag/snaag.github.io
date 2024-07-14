@@ -1,0 +1,100 @@
+.reactMarkdown {
+    * {
+        font-size: 1rem; /* 16px */
+        line-height: 1.75rem; /* 28px */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    h1 {
+        // text-2xl
+        font-size: 1.5rem; /* 24px */
+        line-height: 2rem; /* 32px */
+        margin: 1rem 0;
+    }
+    h2 {
+        // text-xl
+        font-size: 1.25rem; /* 20px */
+        line-height: 1.75rem; /* 28px */
+        margin: 1rem 0;
+
+    }
+    h3 {
+        // text-lg
+        font-size: 1.125rem; /* 18px */
+        line-height: 1.75rem; /* 28px */
+        margin: 1rem 0;
+    }
+    h4, h5, h6 {
+        // text-base, bold
+        font-size: 1rem; /* 16px */
+        font-weight: 500;
+        margin: 1rem 0;
+    }
+
+    ul {
+        list-style-type: disc; /* ul은 disc, ol은 decimal을 자주 사용합니다 */
+        margin-left: 1.5rem; /* 왼쪽 여백을 조정하여 들여쓰기를 설정 */
+        padding-left: 0; /* 필요에 따라 패딩 조정 */
+
+        li {
+            list-style-type: circle;
+        }
+    }
+
+    ol {
+        list-style-type: disc;
+        margin-left: 1.5rem; /* 왼쪽 여백을 조정하여 들여쓰기를 설정 */
+        padding-left: 0; /* 필요에 따라 패딩 조정 */
+
+        li {
+            list-style-type: decimal;
+        }
+    }
+
+    pre {}
+
+    p {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    strong {
+        font-weight: 700;
+    }
+    em {
+        font-style: italic;
+    }
+
+    code {
+        background-color: #eeeeee;
+        padding: 2px 5px;
+        border: 1px solid #b2b2b2;
+        border-radius: 5px;
+    }
+
+    pre code {
+        background-color: #eeeeee;
+        border: 1px solid #b2b2b2;
+        display: block;
+        padding: 10px;
+        overflow-x: scroll;
+        margin: 1rem 0;
+    }
+
+    blockquote {
+        padding: 0 1rem;
+        margin: 1rem 0;
+        opacity: 0.6;
+        position: relative;
+
+        &::before {
+            content: "";
+            width: 5px;
+            height: 100%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}
