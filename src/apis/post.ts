@@ -11,7 +11,7 @@ const authInstance = axios.create({
 })
 
 export const getLabels = async (): Promise<AxiosResponse<Label[]>> => {
-    return authInstance.get( '/labels');
+    return authInstance.get('/labels');
 }
 
 export const getLabelsForOneIssue = async (issueNo: number): Promise<AxiosResponse<Label[]>> => {
@@ -34,7 +34,7 @@ export const getIssuesByLabels = async (labels: string[]): Promise<AxiosResponse
     return getIssues(params);
 }
 
-export const getIssues = async (givenParams: {[key:string]: any} = {}) => {
+export const getIssues = async (givenParams: { [key: string]: any } = {}) => {
     const params = {
         page: 1,
         per_page: 100,
@@ -48,8 +48,50 @@ export const getIssue = async (issueNo: string): Promise<AxiosResponse<Issue>> =
     return authInstance.get(`/issues/${issueNo}`)
 }
 
-export const getCommentsOfIssue = async (issueNo: number): Promise<AxiosResponse<Comment[]>> => {
+export const getCommentsOfIssue = async (issueNo: string): Promise<AxiosResponse<Comment[]>> => {
     return authInstance.get(`/issues/${issueNo}/comments`)
+}
+
+
+// issue 와 comment, label 을 모아서 반환
+export const getPost = async (issueNo: string) => {
+    const ret: Post = {
+        markdowns: [],
+        references: [],
+        title: "",
+        labels: []
+    };
+
+    const issue = await getIssue(issueNo);
+    const comments = await getCommentsOfIssue(issueNo);
+
+    const issueMarkdowns = [];
+    issueMarkdowns.push(issue.data.body);
+
+    comments.data.forEach((comment) => {
+        issueMarkdowns.push(comment.body);
+    })
+
+    issueMarkdowns.forEach((issueMarkdown) => {
+        if (issueMarkdown.includes("## Reference")) {
+            ret.references = issueMarkdown
+                .replace("## Reference", "")
+                .split("- ")
+                .filter((_) => _.startsWith("https://"))
+                .map((_) => _.replace(/[\r\n]+/g, ''))
+
+        } else {
+            ret.markdowns.push(issueMarkdown);
+        }
+    })
+
+    ret.title = issue.data.title;
+    ret.labels = issue.data.labels.map((label) => ({
+        name: label.name,
+        color: label.color
+    }));
+
+    return ret;
 }
 
 // 레이블 이름들과, 작성된 이슈들의 갯수를 반환
