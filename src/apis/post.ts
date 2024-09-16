@@ -1,56 +1,44 @@
 import axios, {AxiosResponse} from 'axios';
-import {getToken} from "./getToken";
-import data from '../assets/data.json';
 
-const baseURL = `https://api.github.com/repos/${data.repository.owner}/${data.repository.repo}`;
+const baseURL = 'https://pumohr7uq4.execute-api.ap-northeast-2.amazonaws.com/default/blog';
 
-const authInstance = axios.create({
+const axiosInstance = axios.create({
     baseURL,
     headers: {
-        Authorization: `Bearer ${getToken()}`
+        'Content-Type': 'application/json'
     }
 })
 
 export const getLabels = async (): Promise<AxiosResponse<Label[]>> => {
-    return authInstance.get('/labels');
+    return axiosInstance.get('/labels');
 }
 
 export const getLabelsForOneIssue = async (issueNo: number): Promise<AxiosResponse<Label[]>> => {
-    return authInstance.get(`/issues/${issueNo}/labels`);
+    return axiosInstance.get(`/labels?issueNo=${issueNo}`);
 }
 
 export const getIssuesByLabel = async (label: string): Promise<AxiosResponse<Issue[]>> => {
-    const params = {
-        labels: label
-    };
-
-    return getIssues(params);
+    return getIssues(label);
 }
 
-export const getIssuesByLabels = async (labels: string[]): Promise<AxiosResponse<Issue[]>> => {
-    const params = {
-        labels: labels.map((label: string) => label.trim()).join(",")
-    };
-
-    return getIssues(params);
+export const getIssuesByLabels = async (givenLabels: string[]): Promise<AxiosResponse<Issue[]>> => {
+    const labels = givenLabels.map((label: string) => label.trim()).join(",");
+    return getIssues(labels);
 }
 
-export const getIssues = async (givenParams: { [key: string]: any } = {}) => {
-    const params = {
-        page: 1,
-        per_page: 100,
-        ...givenParams
+export const getIssues = async (labels?: string) => {
+    if(labels) {
+        return axiosInstance.get('/issues?labels='+labels);
     }
-
-    return authInstance.get('/issues', {params})
+    return axiosInstance.get('/issues');
 }
 
 export const getIssue = async (issueNo: string): Promise<AxiosResponse<Issue>> => {
-    return authInstance.get(`/issues/${issueNo}`)
+    return axiosInstance.get(`/issue?issueNo=${issueNo}`)
 }
 
 export const getCommentsOfIssue = async (issueNo: string): Promise<AxiosResponse<Comment[]>> => {
-    return authInstance.get(`/issues/${issueNo}/comments`)
+    return axiosInstance.get(`/comments?issueNo=${issueNo}`)
 }
 
 
