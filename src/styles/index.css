@@ -69,6 +69,8 @@ code {
 }
 
 .profile__youtube {
-  background-color: #FF0000;
+  background-color: #c43030;
   color: #FFFFFF;
+  padding: 2px;
+  border-radius: 4px;
 }

@@ -18,7 +18,7 @@ const RecentPostList = () => {
 
     return (
         <div>
-            <h1 className="text-2xl text-center m-8 font-bold md:text-left">최근 글 목록</h1>
+            <h1 className="text-2xl text-center mt-8 mb-8 font-bold md:text-left">최근 글 목록</h1>
             <div>
                 {
                     posts.map((post, id) => <ListPostTitle post={post} key={id}/>)
